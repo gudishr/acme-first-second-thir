@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Acme First, Second, Third</h1>
+        <div id='lists'>
+            <div id='first'>
+                <button disabled><</button>
+                <button id='firstNext'>></button>
+                <h2>FIRST</h2>
+                <ul></ul>
+            </div>
+            <div id='second'>
+                <button id='secondPrevious'><</button>
+                <button id='secondNext'>></button>
+                <h2>SECOND</h2>
+            </div>
+            <div id='third'>
+                <button id='thirdPrevious'><</button>
+                <button disabled>></button>
+                <h2>THIRD</h2>
+            </div>
+        </div>
+        <script>
+            const slots = ['first', 'second', 'third']
+            const users = [
+                { id: 1, name: 'moe', slot: 'first'},
+                { id: 2, name: 'larry', slot: 'second'},
+                { id: 3, name: 'curly', slot: 'third'},
+                { id: 4, name: 'lucy', slot: 'third', selected: true},
+                ]
+
+                // Get an obj of all slots and users per slot
+                allSlotsObj = slots.reduce((acc,el) => {
+                    arr = users.filter(obj =>  el === obj.slot)  
+                    acc[el] = arr
+                    return acc
+                }, {})
+                
+                // Generate html for above obj
+                html = 
+
+                console.log(allSlotsObj)
+        </script>
+    </body>
+</html>

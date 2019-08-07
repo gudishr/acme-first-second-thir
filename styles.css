@@ -1,0 +1,36 @@
+body {
+    font-family: verdana;
+    font-weight: bold
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 1rem;
+}
+
+#lists {
+    display: flex;
+}
+
+#lists > div {
+    width: 33%;
+    border: 1px solid tomato;
+    margin: 2rem;
+    padding: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: tomato;
+}
+
+button:disabled {
+    background-color: whitesmoke;
+}
+
+.tomato {
+    background-color: tomato;
+}
