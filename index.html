@@ -9,17 +9,19 @@
                 <button disabled><</button>
                 <button id='firstNext'>></button>
                 <h2>FIRST</h2>
-                <ul></ul>
+                <!-- <ul id='firstList'></ul> -->
             </div>
             <div id='second'>
                 <button id='secondPrevious'><</button>
                 <button id='secondNext'>></button>
                 <h2>SECOND</h2>
+                <!-- <ul id='secondList'></ul> -->
             </div>
             <div id='third'>
                 <button id='thirdPrevious'><</button>
                 <button disabled>></button>
                 <h2>THIRD</h2>
+                <!-- <ul id='thirdList'></ul> -->
             </div>
         </div>
         <script>
@@ -32,16 +34,50 @@
                 ]
 
                 // Get an obj of all slots and users per slot
-                allSlotsObj = slots.reduce((acc,el) => {
+                const allSlotsObj = slots.reduce((acc,el) => {
                     arr = users.filter(obj =>  el === obj.slot)  
                     acc[el] = arr
                     return acc
                 }, {})
                 
                 // Generate html for above obj
-                html = 
+                function render() {
+                    for (const key in allSlotsObj) {    
+                        const ulList = document.getElementById(key)
+                        const val = allSlotsObj[key]
+                        for (let i = 0; i < val.length; i++) {
+                            const el = `<ul><li id='${val[i].name}'>${val[i].name}</li></ul>`
+                            ulList.innerHTML += el
+                        }
+                    }
+                }
 
-                console.log(allSlotsObj)
+                render()
+                
+                // On Clicking user events
+                for (let i = 0; i < users.length; i++) {
+                    console.log(users[i].name)
+                    console.log(document.getElementById(users[i].name))
+                    document.getElementById(users[i].name).addEventListener('click', (ev) => {
+                      const target = ev.target
+                      target.classList.toggle('selected')  
+                    })
+                }
+
+                // On clicking buttons
+                // console.log(document.querySelector('button'))
+                document.querySelector('#lists').addEventListener('click', (ev) => {
+                      const target = ev.target
+                      if (target.id === 'firstNext') {
+                        const selectedUser = document.getElementsByClassName('selected')
+                          const idx = allSlotsObj['first'].indexOf(selectedUser.id)
+                          delete allSlotsObj[first][idx]
+                          allSlotsObj['second'].push(selectedUser)
+                          render()
+                      }  
+                    })
+ 
+
         </script>
     </body>
 </html>

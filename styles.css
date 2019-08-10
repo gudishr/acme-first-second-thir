@@ -34,3 +34,7 @@ button:disabled {
 .tomato {
     background-color: tomato;
 }
+
+.selected {
+    background-color: tomato;
+}
